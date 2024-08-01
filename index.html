@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+    <body>
+        <header>
+            <div id="logo"><img src="images/logo.png" alt=""></div>
+            <ul id="nav-tabs">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experiences">Experience</a></li>
+                <li><a href="#">My Work</a></li>
+                <li><a href="#contact-section">Contact me</a></li>
+                <li><a href="/Tushar_Dasare.pdf">Resume</a></li>
+            </ul>
+            <div id="menu-btn" onclick="toggleMenu()">
+                <div class="menu-bars" id="bar1"></div>
+                <div class="menu-bars" id="bar2"></div>
+                <div class="menu-bars" id="bar3"></div>
+            </div>
+            <ul id="nav-menu" data-vis="hidden">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experiences">Experience</a></li>
+                <li><a href="#">My Work</a></li>
+                <li><a href="#contact-section">Contact me</a></li>
+            </ul>
+        </header>
+        <section id="main-section">
+            <section id="hero-section">
+                <div id="hero-text">
+                    I'm <span class="name">TUSHAR DASARE</span> <br>
+                    Web Developer with an expertise in React.js & Python
+                    <a href="#contact-section"><button class="border-btn">Contact me</button></a>
+                </div>
+                <div id="hero-image">
+                    <img src="/images/hero-img.png" alt="">
+                </div>
+            </section>
+            <section id="about">
+                <h3 class="heading-center">About</h3>
+                <p><span class="name">I'm </span> passionate about creating seamless user experiences, I specialize in frontend development with a strong foundation in Python and Django. With a keen eye for design and a knack for problem-solving, I build interactive and efficient web applications that delight users and meet business needs. Let's turn your ideas into reality.</p>
+            </section>
+        </section>
+        <section id="experiences">
+            <h3 class="heading">Experience</h3>
+            <div id="timeline">
+                <div class="timeline-details">
+                    <div class="tl-dot"><div class="tl-year-label">Aug 2023</div><div class="dot"></div></div>
+                    <h3 class="tl-detail-heading">Associate UI Developer</h3>
+                    <h5 class="tl-detail-sub-heading">Webgile Solutions, Nagpur</h5>
+                    <p class="tl-detail-desc">
+                        I have worked on various projects while being here and gained hands-on experiences with <span class="highlight">React.js</span>, Ionic Framework, Mobile application development. <br>
+                        I have gained knowledge on web development practices and collaborated with cross-functional teams to deliver quality solutions to real world problems.
+                    </p>
+                </div>
+                <div class="timeline-details">
+                    <div class="tl-dot"><div class="tl-year-label">Apr 2023</div><div class="dot"></div></div>
+                    <h3 class="tl-detail-heading">Software Engineer Trainee</h3>
+                    <h5 class="tl-detail-sub-heading">Amantya Technologies, Nagpur</h5>
+                    <p class="tl-detail-desc">
+                        Had a deep understanding of 5G Network system and Iot Architecture.
+                        Participated in active learning and team-work, deep diving into programming pratices and collaborative learning.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h3 class="heading">My Skills</h3>
+            <div id="skills-container">
+                <div class="skill-box">
+                    <div class="skill-img">
+                        <img src="/images/python-logo.png" alt="">
+                    </div>
+                    <div class="skill-name">
+                        <span>Python</span>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-img">
+                        <img src="/images/django-logo.png" alt="">
+                    </div>
+                    <div class="skill-name">
+                        <span>Django</span>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-img">
+                        <img src="/images/react-logo.png" alt="">
+                    </div>
+                    <div class="skill-name">
+                        <span>React.js</span>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-img">
+                        <img src="/images/ionic.png" alt="">
+                    </div>
+                    <div class="skill-name">
+                        <span>React Ionic</span>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-img">
+                        <img src="/images/javascript-logo.png" alt="">
+                    </div>
+                    <div class="skill-name">
+                        <span>Javascript</span>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-img">
+                        <img src="/images/nodejs-logo.png" alt="">
+                    </div>
+                    <div class="skill-name">
+                        <span>Node.js</span>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-img">
+                        <img src="/images/git-logo.png" alt="">
+                    </div>
+                    <div class="skill-name">
+                        <span>Git Source <br> control</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="contact-section">
+            <h3 class="heading-center">Contact Me</h3>
+            <div id="contact">
+                <a href="mailto:tushardasare1701@gmail.com" class="contact-tab"><img src="/images/gmail.png" alt=""> tushardasare1701@gmail.com</a>
+                <a href="tel:+917304431820" class="contact-tab"><img src="/images/phone.png" alt="">7304431820</a>
+                <a href="https://www.linkedin.com/in/tushar-dasare-web-developer" class="contact-tab"><img src="/images/linkedin.png" alt="">LinkedIn</a>
+                <a href="https://wa.me/+917304431820" class="contact-tab"><img src="/images/wattsapp.png" alt="">WhatsApp me</a>
+            </div>
+        </section>
+
+    </body>
+    <script>
+        function toggleMenu(){
+            const menuNav = document.getElementById('nav-menu');
+            if(menuNav.getAttribute('data-vis')=='hidden'){
+                makeArrow();
+                menuNav.style.right = '1rem';
+                menuNav.setAttribute('data-vis','visible');
+            }else if(menuNav.getAttribute('data-vis')=='visible'){
+                makeBars();
+                menuNav.style.right='-40%';
+                menuNav.setAttribute('data-vis','hidden');
+            }
+        }
+        const bar1 = document.getElementById('bar1');
+        const bar2 = document.getElementById('bar2');
+        const bar3 = document.getElementById('bar3');
+        function makeArrow(){
+            bar1.style.transform = 'translate(7px,3px) rotateZ(40deg)';
+            bar1.style.width = '15px';
+            bar2.style.width = '25px';
+            bar3.style.transform = 'translate(7px,-3px) rotateZ(-40deg)';
+            bar3.style.width = '15px';
+        }
+        function makeBars(){
+            bar1.style.transform = 'revert';
+            bar1.style.width = '70%';
+            bar2.style.width = '70%';
+            bar3.style.transform = 'revert';
+            bar3.style.width = '70%';
+        }
+    </script>
+</html>
