@@ -100,14 +100,6 @@
                 </div>
                 <div class="skill-box">
                     <div class="skill-img">
-                        <img src="images/ionic.png" alt="">
-                    </div>
-                    <div class="skill-name">
-                        <span>React Ionic</span>
-                    </div>
-                </div>
-                <div class="skill-box">
-                    <div class="skill-img">
                         <img src="images/javascript-logo.png" alt="">
                     </div>
                     <div class="skill-name">
@@ -120,6 +112,30 @@
                     </div>
                     <div class="skill-name">
                         <span>Node.js</span>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-img">
+                        <img src="images/expressjs-logo.png" alt="">
+                    </div>
+                    <div class="skill-name">
+                        <span>Express.js</span>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-img">
+                        <img src="images/ionic.png" alt="">
+                    </div>
+                    <div class="skill-name">
+                        <span>React Ionic</span>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-img">
+                        <img src="images/sql-logo.png" alt="">
+                    </div>
+                    <div class="skill-name">
+                        <span>SQL</span>
                     </div>
                 </div>
                 <div class="skill-box">
@@ -141,6 +157,13 @@
                 <a href="tel:+917304431820" class="contact-tab"><img src="images/phone.png" alt="">7304431820</a>
                 <a href="https://www.linkedin.com/in/tushar-dasare-web-developer" class="contact-tab"><img src="images/linkedin.png" alt="">LinkedIn</a>
                 <a href="https://wa.me/+917304431820" class="contact-tab"><img src="images/wattsapp.png" alt="">WhatsApp me</a>
+            </div>
+            <div id="email-id">
+            <h4>...or just leave your email id</h4>
+                <form action="javascript:void(0)" method="post" id="email-submit-form">
+                    <input type="email" name="email" id="email-input"/>
+                    <button type="submit" id="email-submit" onclick="submitEmail()"><img src="images/next.png" alt=""></button>
+                </form>
             </div>
         </section>
 
@@ -174,6 +197,14 @@
             bar2.style.width = '70%';
             bar3.style.transform = 'revert';
             bar3.style.width = '70%';
+        }
+
+
+        function submitEmail(){
+            const url = "https://tushar07.pythonanywhere.com/";
+            console.log('dfsfj');
+            var xhr = new XMLHttpRequest();
+            
         }
     </script>
 </html>

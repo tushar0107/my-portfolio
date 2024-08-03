@@ -67,7 +67,7 @@ ul#nav-menu{
     display: none;
     padding: 0;
     position: absolute;
-    right: -40%;
+    right: -50%;
     top: 3rem;
     list-style: none;
     transition: .4s ease;
@@ -280,6 +280,34 @@ section#contact-section #contact a.contact-tab img{
     display: inline-block;
     width: 30px;
     margin-right: 1rem;
+}
+#email-id{
+    width: min(700px,100%);
+    margin: 3rem auto;
+    text-align: center;
+}
+#email-id form{
+    width: fit-content;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+#email-id input{
+    width: 300px;
+    color: var(--primary-text-color);
+    font-size: 20px;
+    padding: 1rem 2rem;
+    background-color: var(--primary-body-color);
+    border: none;
+    outline: none;
+}
+#email-id button{
+    background-color: var(--bg-extra-light-color);
+    border: none;
+    outline: none;
+    padding: 1rem 2rem;
+    cursor: pointer;
 }
 
 @media screen and (max-width:678px){
