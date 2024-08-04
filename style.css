@@ -282,7 +282,7 @@ section#contact-section #contact a.contact-tab img{
     margin-right: 1rem;
 }
 #email-id{
-    width: min(700px,100%);
+    width: min(700px,90%);
     margin: 3rem auto;
     text-align: center;
 }
@@ -294,10 +294,10 @@ section#contact-section #contact a.contact-tab img{
     align-items: stretch;
 }
 #email-id input{
-    width: 300px;
+    width: 100%;
     color: var(--primary-text-color);
-    font-size: 20px;
-    padding: 1rem 2rem;
+    font-size: 18px;
+    padding: 1rem 1.5rem;
     background-color: var(--primary-body-color);
     border: none;
     outline: none;
