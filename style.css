@@ -29,6 +29,9 @@ h3.heading{
 h3.heading-center{
     text-align: center;
 }
+a{
+    color: var(--primary-text-color);
+}
 header{
     display: flex;
     justify-content: space-between;
@@ -241,6 +244,11 @@ div#skills-container{
     background-color: var(--bg-light-color);
     border-radius: .5rem;
     text-align: center;
+    transition: .4s;
+}
+#skills-container .skill-box:hover{
+    background-color: var(--bg-extra-light-color);
+    color: var(--primary-body-color);
 }
 #skills-container .skill-box .skill-img{
     width: 40%;
@@ -250,9 +258,60 @@ div#skills-container{
     aspect-ratio: 1;
     object-fit: contain;
 }
-
-section#contact-section{
+section#work-container{
+    padding: 4rem 0;
     background-color: var(--bg-light-color);
+}
+#my-work{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: center;
+    gap: 2rem;
+    width: min(700px, 90%);
+    margin: 3rem auto;
+}
+#my-work .project-work{
+    width: 300px;
+    aspect-ratio: 1;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+.project-work img.project-img{
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: top;
+}
+.project-work:hover .overlay{
+    inset: 0 0 0 0;
+}
+.overlay{
+    position: absolute;
+    inset: 100% 0 -100% 0;
+    z-index: 10;
+    background-color: #000000c2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: .5s ease;
+}
+.overlay img.project-techs{
+    width: 30px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    padding: 0 .5rem;
+}
+.project-link{
+    text-decoration: none;
+    padding: .5rem 1rem;
+    border: 2px solid var(--primary-text-color);
+    border-radius: 8px;
+}
+section#contact-section{
+    background-color: var(--primary-body-color);
     border-top: 3px solid var(--primary-text-color);
     border-bottom: 3px solid var(--primary-text-color);
 }
@@ -298,7 +357,7 @@ section#contact-section #contact a.contact-tab img{
     color: var(--primary-text-color);
     font-size: 20px;
     padding: 1rem 2rem;
-    background-color: var(--primary-body-color);
+    background-color: var(--bg-light-color);
     border: none;
     outline: none;
 }

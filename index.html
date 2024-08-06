@@ -39,7 +39,7 @@
                     <a href="#contact-section"><button class="border-btn">Contact me</button></a>
                 </div>
                 <div id="hero-image">
-                    <img src="images/hero-img.png" alt="">
+                    <!-- <img src="images/hero-img.png" alt=""> -->
                 </div>
             </section>
             <section id="about">
@@ -132,6 +132,14 @@
                 </div>
                 <div class="skill-box">
                     <div class="skill-img">
+                        <img src="images/mongodb_logo.png" alt="">
+                    </div>
+                    <div class="skill-name">
+                        <span>MongoDB</span>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-img">
                         <img src="images/sql-logo.png" alt="">
                     </div>
                     <div class="skill-name">
@@ -149,6 +157,203 @@
             </div>
         </section>
 
+        <section id="work-container">
+            <h3 class="heading">My Work</h3>
+            <div id="my-work">
+                <!-- real time clock -->
+                <div id="project-clock" class="project-work">
+                    <style>
+                        #project-clock{
+                            width: fit-content;
+                            margin: 0 auto;
+                        }
+                        #work-container #clock-container{
+                            height: 300px;
+                            aspect-ratio: 1;
+                            position: relative;
+                            background-color: #7a7a7a;
+                            color: #e7e7e7;
+                        }
+                        #work-container #clock{
+                            position: absolute;
+                            z-index: 0;
+                            top: 50%;left: 50%;
+                            transform: translate(-50%,-50%);
+                            width: 200px;
+                            height: 200px;
+                            border: 2px solid #dd9e15;
+                            outline: 4px solid #dd9e15;
+                            background-color: var(--primary-body-color);
+                            border-radius: 50%;
+                        
+                        }
+                        #work-container #clock .numbers{
+                            position: absolute;
+                        }
+                        #work-container #hands,
+                        #work-container #hour-hand,
+                        #work-container #minute-hand,
+                        #work-container #second-hand{
+                            position: absolute;
+                            top: 50%;left: 50%;
+                            transform: translate(-50%,-50%);
+                        }
+                        #work-container #hour-hand{
+                            z-index: 6;
+                            width: 4px;
+                            height: 90px;
+                        }
+                        #work-container #hour-hand div{
+                            width: 5px;
+                        }
+                        #work-container #minute-hand{
+                            z-index: 7;
+                            width: 4px;
+                            height: 120px;
+                        }
+                        #work-container #minute-hand div{
+                            width: 4px;
+                            margin: 0 auto;
+                            border: 1px solid var(--primary-text-color);
+                            background-color: transparent;
+                        }
+                        #work-container #second-hand{
+                            z-index: 8;
+                            width: 4px;
+                            height: 160px;
+                        }
+                        #work-container #second-hand div{
+                            width: 1px;
+                        }
+                        #work-container .clock-hands div{
+                            height: 45%;
+                            background-color: var(--primary-text-color);
+                            margin: 0 auto;
+                            border-radius: 10px;
+                        }
+                        #work-container #dot{
+                            position: absolute;
+                            z-index: 1;
+                            top: 50%;left: 50%;
+                            transform: translate(-50%,-50%);
+                            width: 5px;
+                            height: 5px;
+                            border-radius: 4px;
+                            background-color: var(--primary-text-color);
+                        }
+                    </style>
+                    <div id="clock-container">
+                        <div id="clock">
+                            <div id="num-12" class="numbers" style="top: 0;left: 90px;">12</div>
+                            <div id="num-1" class="numbers" style="top: 10px;left: 140px;">1</div>
+                            <div id="num-2" class="numbers" style="top: 45px;left: 170px;">2</div>
+                            <div id="num-3" class="numbers" style="top: 90px;left: 190px;">3</div>
+                            <div id="num-4" class="numbers" style="top: 140px;left: 170px;">4</div>
+                            <div id="num-5" class="numbers" style="top: 170px;left: 140px;">5</div>
+                            <div id="num-6" class="numbers" style="top: 180px;left:95px;">6</div>
+                            <div id="num-7" class="numbers" style="top: 170px;left: 50px;">7</div>
+                            <div id="num-8" class="numbers" style="top: 140px;left: 20px;">8</div>
+                            <div id="num-9" class="numbers" style="top: 90px;left: 5px;">9</div>
+                            <div id="num-10" class="numbers" style="top: 45px;left: 20px;">10</div>
+                            <div id="num-11" class="numbers" style="top: 10px;left: 50px;">11</div>
+                        
+                        </div>
+                        <div id="hands">
+                            <div id="hour-hand" class="clock-hands">
+                                <div></div>
+                            </div>
+                            <div id="minute-hand" class="clock-hands">
+                                <div></div>
+                            </div>
+                            <div id="second-hand" class="clock-hands">
+                                <div></div>
+                            </div>
+                        </div>
+                        <div id="dot"></div>
+                    </div>
+                    <div class="overlay">
+                        <p>A Real-time Clock using HTML/CSS and Javascript</p>
+                        <p>
+                            <img src="images/javascript-logo.png" class="project-techs" alt="">
+                        </p>
+                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', ()=>{
+                            const hourHand = document.getElementById('hour-hand');
+                            const minuteHand = document.getElementById('minute-hand');
+                            const secondHand = document.getElementById('second-hand');
+
+                            setInterval(() => {
+                                var d = new Date();
+                                var hours = d.getHours();
+                                var minutes = d.getMinutes();
+                                var seconds = d.getSeconds();
+                            
+                            
+                                secondHand.style.transform = `translate(-50%,-50%) rotateZ(${(360/60)*seconds}deg)`;
+                                minuteHand.style.transform = `translate(-50%,-50%) rotateZ(${(360/60)*minutes}deg)`;
+                                hourHand.style.transform = `translate(-50%,-50%) rotateZ(${(360/12)*(hours%12)}deg)`;
+                            
+                            
+                            }, 1000);
+                        });
+                    </script>
+                </div>
+
+                <!-- E-commerce app using Django -->
+                <div id="project-ecommerce" class="project-work">
+                   <style>
+                       
+                   </style>
+                   <img src="images/e-commerce using django and html-css.png" class="project-img" alt="">
+                   <div class="overlay">
+                       <p>E-commerce Project Using Python Django and HTML/CSS</p>
+                       <p>
+                           <img src="images/python-logo.png" class="project-techs" alt="">
+                           <img src="images/django-logo.png" class="project-techs" alt="">
+                       </p>
+                       <p><a href="https://tushar07.pythonanywhere.com" class="project-link" target="_blank">View project</a></p>
+                   </div>
+                </div>
+
+                <!-- restaurant booking app -->
+                <div id="restaurant-booking" class="project-work">
+                   <style>
+                      
+                   </style>
+                   <img src="images/food-xplore-1.jpg" class="project-img" alt="">
+                   <div class="overlay">
+                       <p>A restaurant booking application using MERN Stack</p>
+                       <p>
+                            <img src="images/mongodb_logo.png" class="project-techs" alt="">
+                            <img src="images/expressjs-logo.png" class="project-techs" alt="">
+                            <img src="images/react-logo.png" class="project-techs" alt="">
+                            <img src="images/nodejs-logo.png" class="project-techs" alt="">
+                       </p>
+                       <p><a href="https://food-xplore.vercel.app" class="project-link" target="_blank">View project</a></p>
+                   </div>
+                </div>
+
+                <!-- restaurant booking app -->
+                <div id="real-time-chat" class="project-work">
+                   <style>
+                      
+                   </style>
+                   <img src="images/real time chat application.png" class="project-img" alt="">
+                   <div class="overlay">
+                       <p>A Real-time Chat application using MERN Stack <br>(React Ionic Framework for UI)</p>
+                       <p>
+                           <img src="images/mongodb_logo.png" class="project-techs" alt="">
+                           <img src="images/expressjs-logo.png" class="project-techs" alt="">
+                           <img src="images/ionic.png" class="project-techs" alt="">
+                           <img src="images/nodejs-logo.png" class="project-techs" alt="">
+                       </p>
+                       <p><a href="https://darzo.vercel.app" class="project-link" target="_blank">View project</a></p>
+                   </div>
+                </div>
+
+            </div>
+        </section>
 
         <section id="contact-section">
             <h3 class="heading-center">Contact Me</h3>
@@ -161,7 +366,7 @@
             <div id="email-id">
             <h4>...or just leave your email id</h4>
                 <form action="javascript:void(0)" method="post" id="email-submit-form">
-                    <input type="email" name="email" id="email-input"/>
+                    <input type="email" name="email" id="email-input" placeholder="Email..."/>
                     <button type="submit" id="email-submit" onclick="submitEmail()"><img src="images/next.png" alt=""></button>
                 </form>
             </div>
