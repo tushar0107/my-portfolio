@@ -38,9 +38,7 @@
                     Web Developer with an expertise in React.js & Python
                     <a href="#contact-section"><button class="border-btn">Contact me</button></a>
                 </div>
-                <div id="hero-image">
-                    <img src="images/hero-img.png" alt="">
-                </div>
+                <div id="hero-image"></div>
             </section>
             <section id="about">
                 <h3 class="heading-center">About</h3>
@@ -375,6 +373,13 @@
 
     </body>
     <script>
+
+        document.addEventListener('DOMContentLoaded',function(){
+            var index = Math.floor(Math.random()*11);
+            var imageEle = '<img src="images/hero-img/developer-'+index+'.png" alt="hero img">';
+            document.getElementById('hero-image').innerHTML = imageEle;
+        });
+
         function toggleMenu(){
             const menuNav = document.getElementById('nav-menu');
             if(menuNav.getAttribute('data-vis')=='hidden'){
