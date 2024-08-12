@@ -139,8 +139,6 @@ section#hero-section{
 #hero-image img{
     display: block;
     width: 90%;
-    height: 60vh;
-    object-fit: contain;
     margin: 0 auto;
 }
 #hero-text a{
