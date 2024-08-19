@@ -378,6 +378,21 @@
             var index = Math.floor(Math.random()*11);
             var imageEle = '<img src="images/hero-img/developer-'+index+'.png" alt="hero img">';
             document.getElementById('hero-image').innerHTML = imageEle;
+
+            // send a request to get csrf token from server (actually to wake up the server)
+            const url = "https://tushar07.pythonanywhere.com/get-csrf-token/";
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                        if (xhr.readyState === XMLHttpRequest.DONE){
+                            if( xhr.status === 200){
+                            }else{
+                                console.error('Error', xhr.status);
+                            }
+                        }
+                    };
+
+            xhr.open('GET', url, true);
+            xhr.send();
         });
 
         function toggleMenu(){
