@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Tushar's Portfolio</title>
 </head>
     <body>
         <header>
@@ -366,7 +366,7 @@
             <h4>...or just leave your email id</h4>
                 <form action="javascript:void(0)" method="post" id="email-submit-form">
                     <input type="email" name="email" id="email-input" placeholder="Email..."/>
-                    <button type="submit" id="email-submit" onclick="submitEmail()"><img src="images/next.png" alt=""></button>
+                    <button type="submit" id="email-submit" onclick="submitEmail()"><img src="images/next.png" alt=""><div id="loader"><span></span></div></button>
                 </form>
             </div>
         </section>
@@ -378,21 +378,6 @@
             var index = Math.floor(Math.random()*11);
             var imageEle = '<img src="images/hero-img/developer-'+index+'.png" alt="hero img">';
             document.getElementById('hero-image').innerHTML = imageEle;
-
-            // send a request to get csrf token from server (actually to wake up the server)
-            const url = "https://tushar07.pythonanywhere.com/get-csrf-token/";
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function(){
-                        if (xhr.readyState === XMLHttpRequest.DONE){
-                            if( xhr.status === 200){
-                            }else{
-                                console.error('Error', xhr.status);
-                            }
-                        }
-                    };
-
-            xhr.open('GET', url, true);
-            xhr.send();
         });
 
         function toggleMenu(){
@@ -427,6 +412,7 @@
 
 
         function submitEmail(){
+            document.getElementById("loader").style.display = 'block';
             const email = document.getElementById("email-input").value;
             const url = "https://tushar07.pythonanywhere.com/portfolio/sendmail/?receiver="+email;
             var xhr = new XMLHttpRequest();
@@ -434,13 +420,15 @@
                         if (xhr.readyState === XMLHttpRequest.DONE){
                             if( xhr.status === 200){
                                 alert(`${JSON.parse(xhr.responseText).message}`);
+                                document.getElementById("loader").style.display = 'none';
                             }else{
-                                console.error('Error', xhr.status);
+                                alert('Error', xhr.status);
+                                document.getElementById("loader").style.display = 'none';
                             }
                         }
                     };
 
-                    xhr.open('GET', url, true);
+            xhr.open('GET', url, true);
             xhr.send();
         }
     </script>
