@@ -376,9 +376,21 @@
     <script>
 
         document.addEventListener('DOMContentLoaded',function(){
+            //generate dynamic random hero image
             var index = Math.floor(Math.random()*11);
             var imageEle = '<img src="images/hero-img/developer-'+index+'.png" alt="hero img">';
             document.getElementById('hero-image').innerHTML = imageEle;
+
+            //send a wake up request to the server
+            const url = 'https://tushar07.pythonanywhere.com/get-csrf-token/';
+            const xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(xhr.status = xhr.DONE){
+                    console.log(xhr.response);
+                }
+            }
+            xhr.open('GET',url,true);
+            xhr.send();
         });
 
         function toggleMenu(){
