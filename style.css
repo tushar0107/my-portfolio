@@ -309,6 +309,27 @@ section#work-container{
     padding: .5rem 1rem;
     border: 2px solid var(--primary-text-color);
     border-radius: 8px;
+    background-color: transparent;
+    color: var(--primary-text-color);
+}
+#preview-container{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    inset: 0 0 0 0;
+    z-index: 100;
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    background-color: #000000a6;
+}
+#previewFrame{
+    width: min(800px,90%);
+    height: 70%;
+    margin: 0 auto;
+    background-color: white;
 }
 section#contact-section{
     background-color: var(--primary-body-color);
