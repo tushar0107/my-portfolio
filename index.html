@@ -299,7 +299,7 @@
                 </div>
 
                 <!-- E-commerce app using Django -->
-                <div id="project-ecommerce" class="project-work">
+                <div id="project-ecommerce" class="project-work" onclick="openProjectPreview('https://tushar07.pythonanywhere.com')">
                    <style>
                        
                    </style>
@@ -315,7 +315,7 @@
                 </div>
 
                 <!-- restaurant booking app -->
-                <div id="restaurant-booking" class="project-work">
+                <div id="restaurant-booking" class="project-work" onclick="openProjectPreview('https://food-xplore.vercel.app')">
                    <style>
                       
                    </style>
@@ -333,7 +333,7 @@
                 </div>
 
                 <!-- restaurant booking app -->
-                <div id="real-time-chat" class="project-work">
+                <div id="real-time-chat" class="project-work" onclick="openProjectPreview('https://darzo.vercel.app')">
                    <style>
                       
                    </style>
@@ -350,23 +350,47 @@
                    </div>
                 </div>
 
+                <!-- React Native application -->
+                <div id="travigo" class="project-work" onclick="openProjectPreview('images/travigo.mp4')">
+                    <style>
+                        video#travigo{
+                            width: 100%;
+                        }
+                    </style>
+                   <video src="images/travigo.mp4" id="travigo"></video>
+                   <div class="overlay">
+                       <p>Travel booking application developed using React Native <br></p>
+                       <p>
+                           <img src="images/react-logo.png" class="project-techs" alt="">
+                       </p>
+                       <p><a href="images/travigo.mp4" class="project-link" target="_blank">Preview</a></p>
+                   </div>
+                </div>
+            </div>
+            <div id="preview-container">
+                <iframe id="previewFrame" src="https://restaurant-booking-app-server.onrender.com/" frameborder="0"></iframe>
+                <div id="preview-actions">
+                    <button id="switch-device" class="project-link" data-content="web" onclick="changeView()">Mobile View</button>
+                    <button id="close-preview" class="project-link" onclick="document.getElementById('preview-container').style.display='none'">Close</button>
+                    <a href="" id="visit-project" target="_blank"><button class="project-link">Visit Project</button></a>
+                </div>
             </div>
         </section>
 
         <section id="contact-section">
             <h3 class="heading-center">Contact Me</h3>
             <div id="contact">
-                <a href="mailto:tushardasare1701@gmail.com" class="contact-tab"><img src="images/gmail.png" alt=""> tushardasare1701@gmail.com</a>
-                <a href="tel:+917304431820" class="contact-tab"><img src="images/phone.png" alt="">7304431820</a>
-                <a href="https://www.linkedin.com/in/tushar-dasare-web-developer" class="contact-tab"><img src="images/linkedin.png" alt="">LinkedIn</a>
-                <a href="https://wa.me/+917304431820" class="contact-tab"><img src="images/wattsapp.png" alt="">WhatsApp me</a>
-                <a href="https://github.com/tushar0107" class="contact-tab"><img src="images/github-logo.png" alt="">Github</a>
-                <a href="https://www.instagram.com/frozzy.dev/?hl=en" class="contact-tab"><img src="images/instagram.png" alt="">Instagram</a>
+                <a href="mailto:tushardasare1701@gmail.com" target="_blank" class="contact-tab"><img src="images/gmail.png" alt=""> tushardasare1701@gmail.com</a>
+                <a href="tel:+917304431820" target="_blank" class="contact-tab"><img src="images/phone.png" alt="">7304431820</a>
+                <a href="https://www.linkedin.com/in/tushar-dasare-web-developer" target="_blank" class="contact-tab"><img src="images/linkedin.png" alt="">LinkedIn</a>
+                <a href="https://wa.me/+917304431820" target="_blank" class="contact-tab"><img src="images/wattsapp.png" alt="">WhatsApp me</a>
+                <a href="https://github.com/tushar0107" target="_blank" class="contact-tab"><img src="images/github-logo.png" alt="">Github</a>
+                <a href="https://www.instagram.com/frozzy.dev/?hl=en" target="_blank" class="contact-tab"><img src="images/instagram.png" alt="">Instagram</a>
             </div>
             <div id="email-id">
             <h4>...or just leave your email id</h4>
                 <form action="javascript:void(0)" method="post" id="email-submit-form">
-                    <input type="email" name="email" id="email-input" placeholder="Email..."/>
+                    <input type="email" name="email" id="email-input" placeholder="Email..." required/>
                     <button type="submit" id="email-submit" onclick="submitEmail()"><img src="images/next.png" alt=""><div id="loader"><span></span></div></button>
                 </form>
             </div>
@@ -391,6 +415,13 @@
             }
             xhr.open('GET',url,true);
             xhr.send();
+
+
+            checkDeviceRatio();
+            window.addEventListener('resize',function(){
+                checkDeviceRatio();
+            });
+            
         });
 
         function toggleMenu(){
@@ -422,9 +453,9 @@
             bar3.style.transform = 'revert';
             bar3.style.width = '70%';
         }
-
-
-        function submitEmail(){
+        
+        document.getElementById('email-submit-form').addEventListener('submit',function (event){
+            event.preventDefault();
             document.getElementById("loader").style.display = 'block';
             const email = document.getElementById("email-input").value;
             const url = "https://tushar07.pythonanywhere.com/portfolio/sendmail/?receiver="+email;
@@ -443,6 +474,40 @@
 
             xhr.open('GET', url, true);
             xhr.send();
+        });
+        
+
+        //for project previews
+        const frame = document.getElementById('previewFrame');
+
+        function checkDeviceRatio(){
+            // hide the device switch button in mobile device or when window resizes
+            const deviceRatio = window.innerWidth/window.innerHeight;
+            if(deviceRatio<1){
+                document.getElementById('switch-device').style.display = 'none';
+            }else{
+                document.getElementById('switch-device').style.display = 'inline-block';
+            }
+        }
+
+        function changeView(event){
+            const button = document.getElementById('switch-device');
+            var currentDevice = button.getAttribute('data-content');
+                if(currentDevice=='mobile'){
+                    button.innerHTML = 'Mobile View';
+                    frame.style.width = 'min(768px,90%)';
+                    button.setAttribute('data-content','web');
+                }else{
+                    button.innerHTML = 'Web View';
+                    frame.style.width = '350px';
+                    button.setAttribute('data-content','mobile');
+                }
+        }
+
+        function openProjectPreview(link){
+            const previewContainer = document.getElementById('preview-container').style.display='flex';
+            document.getElementById('visit-project').href = link;
+            frame.src = link
         }
     </script>
 </html>
