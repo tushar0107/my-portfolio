@@ -70,12 +70,12 @@ ul#nav-menu{
     display: none;
     padding: 0;
     position: absolute;
-    right: -50%;
+    right: -70%;
     top: 3rem;
     list-style: none;
     transition: .4s ease;
     backdrop-filter: blur(2px);
-    background-color: #2727278c;
+    background-color: #000000ab;
     border-radius: 1rem;
     border: 2px solid var(--bg-extra-light-color);
 }
@@ -234,6 +234,7 @@ div#skills-container{
     margin: 0 auto;
 }
 #skills-container .skill-box{
+    width: 100%;
     aspect-ratio: 1;
     display: flex;
     justify-content: center;
@@ -317,13 +318,13 @@ section#work-container{
     height: 100vh;
     position: fixed;
     inset: 0 0 0 0;
-    z-index: 100;
+    z-index: 100000;
     display: none;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-    background-color: #000000a6;
+    background-color: #000000d6;
 }
 #previewFrame{
     width: min(800px,90%);
@@ -356,6 +357,7 @@ section#contact-section #contact a.contact-tab{
     color: var(--primary-text-color);
     text-decoration: none;
     font-size: 14px;
+    background-color: var(--bg-light-color);
 }
 section#contact-section #contact a.contact-tab img{
     display: inline-block;

@@ -187,6 +187,7 @@
                         }
                         #work-container #clock .numbers{
                             position: absolute;
+                            color: var(--white-text-color);
                         }
                         #work-container #hands,
                         #work-container #hour-hand,
@@ -299,7 +300,7 @@
                 </div>
 
                 <!-- E-commerce app using Django -->
-                <div id="project-ecommerce" class="project-work" onclick="openProjectPreview('https://tushar07.pythonanywhere.com')">
+                <div id="project-ecommerce" class="project-work">
                    <style>
                        
                    </style>
@@ -310,12 +311,12 @@
                            <img src="images/python-logo.png" class="project-techs" alt="">
                            <img src="images/django-logo.png" class="project-techs" alt="">
                        </p>
-                       <p><a href="https://tushar07.pythonanywhere.com" class="project-link" target="_blank">View project</a></p>
+                       <p><a href="javascript:void(0)" class="project-link" onclick="openProjectPreview('https://tushar07.pythonanywhere.com')">Project preview</a></p>
                    </div>
                 </div>
 
                 <!-- restaurant booking app -->
-                <div id="restaurant-booking" class="project-work" onclick="openProjectPreview('https://food-xplore.vercel.app')">
+                <div id="restaurant-booking" class="project-work">
                    <style>
                       
                    </style>
@@ -328,12 +329,12 @@
                             <img src="images/react-logo.png" class="project-techs" alt="">
                             <img src="images/nodejs-logo.png" class="project-techs" alt="">
                        </p>
-                       <p><a href="https://food-xplore.vercel.app" class="project-link" target="_blank">View project</a></p>
+                       <p><a href="javascript:void(0)" class="project-link" onclick="openProjectPreview('https://food-xplore.vercel.app')">Project preview</a></p>
                    </div>
                 </div>
 
                 <!-- restaurant booking app -->
-                <div id="real-time-chat" class="project-work" onclick="openProjectPreview('https://darzo.vercel.app')">
+                <div id="real-time-chat" class="project-work">
                    <style>
                       
                    </style>
@@ -346,12 +347,12 @@
                            <img src="images/ionic.png" class="project-techs" alt="">
                            <img src="images/nodejs-logo.png" class="project-techs" alt="">
                        </p>
-                       <p><a href="https://darzo.vercel.app" class="project-link" target="_blank">View project</a></p>
+                       <p><a href="javascript:void(0)" class="project-link" onclick="openProjectPreview('https://darzo.vercel.app')">Project preview</a></p>
                    </div>
                 </div>
 
                 <!-- React Native application -->
-                <div id="travigo" class="project-work" onclick="openProjectPreview('images/travigo.mp4')">
+                <div id="travigo" class="project-work">
                     <style>
                         video#travigo{
                             width: 100%;
@@ -363,16 +364,16 @@
                        <p>
                            <img src="images/react-logo.png" class="project-techs" alt="">
                        </p>
-                       <p><a href="images/travigo.mp4" class="project-link" target="_blank">Preview</a></p>
+                       <p><a href="javascript:void(0)" class="project-link" onclick="openProjectPreview('images/travigo.mp4')">Project preview</a></p>
                    </div>
                 </div>
             </div>
             <div id="preview-container">
-                <iframe id="previewFrame" src="https://restaurant-booking-app-server.onrender.com/" frameborder="0"></iframe>
+                <iframe id="previewFrame" src="" frameborder="0"></iframe>
                 <div id="preview-actions">
                     <button id="switch-device" class="project-link" data-content="web" onclick="changeView()">Mobile View</button>
-                    <button id="close-preview" class="project-link" onclick="document.getElementById('preview-container').style.display='none'">Close</button>
-                    <a href="" id="visit-project" target="_blank"><button class="project-link">Visit Project</button></a>
+                    <button id="close-preview" class="project-link" onclick="closePreview()">Close</button>
+                    <a href="javascript:void(0)" id="visit-project" target="_blank"><button class="project-link">Visit Project</button></a>
                 </div>
             </div>
         </section>
@@ -432,7 +433,7 @@
                 menuNav.setAttribute('data-vis','visible');
             }else if(menuNav.getAttribute('data-vis')=='visible'){
                 makeBars();
-                menuNav.style.right='-40%';
+                menuNav.style.right='-70%';
                 menuNav.setAttribute('data-vis','hidden');
             }
         }
@@ -499,7 +500,7 @@
                     button.setAttribute('data-content','web');
                 }else{
                     button.innerHTML = 'Web View';
-                    frame.style.width = '350px';
+                    frame.style.width = '300px';
                     button.setAttribute('data-content','mobile');
                 }
         }
@@ -508,6 +509,10 @@
             const previewContainer = document.getElementById('preview-container').style.display='flex';
             document.getElementById('visit-project').href = link;
             frame.src = link
+        }
+        function closePreview(){
+            document.getElementById('preview-container').style.display='none';
+            frame.src = '';
         }
     </script>
 </html>
