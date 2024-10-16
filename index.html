@@ -291,7 +291,7 @@
                             
                                 secondHand.style.transform = `translate(-50%,-50%) rotateZ(${(360/60)*seconds}deg)`;
                                 minuteHand.style.transform = `translate(-50%,-50%) rotateZ(${(360/60)*minutes}deg)`;
-                                hourHand.style.transform = `translate(-50%,-50%) rotateZ(${(360/12)*(hours%12)}deg)`;
+                                hourHand.style.transform = `translate(-50%,-50%) rotateZ(${((360/12)*(hours%12))+(Math.floor(minutes/12)*6)}deg)`;
                             
                             
                             }, 1000);
