@@ -315,6 +315,7 @@ section#work-container{
     background-color: #000000c2;
     text-align: center;
     display: flex;
+    font-size: 14px;
     flex-direction: column;
     justify-content: center;
     transition: .5s ease;
