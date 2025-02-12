@@ -442,7 +442,9 @@
             window.addEventListener('resize',function(){
                 checkDeviceRatio();
             });
-            
+
+            wakeServer('https://restaurant-booking-app-server.onrender.com');
+            wakeServer('https://frendly-server.onrender.com')
         });
 
         function toggleMenu(){
@@ -533,6 +535,12 @@
         function closePreview(){
             document.getElementById('preview-container').style.display='none';
             frame.src = '';
+        }
+
+        function wakeServer(url){
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET',url,true);
+            xhr.send();
         }
     </script>
 </html>
