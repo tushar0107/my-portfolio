@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+	<title>Brick Breaker</title>
+	<style>
+		body{
+			margin: 0;
+			background-color: #e6e6e6;
+		}
+		#actions,#game-btns{
+			position: fixed;
+			inset: auto 50% 6rem 50%;
+			display: flex;
+			justify-content: center;
+			gap: 1.5rem;
+			margin: 1rem auto;
+		}
+		#actions button,
+		#game-btns button{
+			padding: 16px 32px;
+			background-color: #299fe4;
+			border: none;
+			border-radius: 6px;
+			color: white;
+		}
+		#game-btns{
+			bottom: 2rem;
+		}
+	</style>
+</head>
+<body>
+	<div id="actions">
+		<button id="leftbtn">left</button>
+		<button id="rightbtn">right</button>
+	</div>
+	<div id="game-btns">
+		<button id="pause">Pause</button>
+		<button id="restart">Restart</button>
+	</div>
+	<script>
+		var config = {
+			type:Phaser.AUTO,
+			width:Math.min(400,window.innerWidth),
+			height:500,
+			backgroundColor: "#ffffff",
+			physics:{
+				default:'arcade',
+				arcade:{
+					gravity:{y:0},
+					debug:false
+				}
+			},
+			scene:{
+				preload:preload,
+				create:create,
+				update:update
+			}
+		}
+		var platform;
+		var ball;
+		var bricks;
+		var cursors;
+		var score=0;
+		var scoreText;
+		var speed = 300;
+		var by = 10;
+		var moveleft = false;
+		var moveright = false;
+		var gameOver = false;
+		var paused=false;
+		const leftbtn = document.getElementById('leftbtn');
+		const rightbtn = document.getElementById('rightbtn');
+		const pausebtn = document.getElementById('pause');
+		document.getElementById('restart').onclick = function(){
+			window.location.reload();
+		};
+
+		const game = new Phaser.Game(config);
+		function preload(){
+			this.load.image('ball','images/ball.png');
+			this.load.image('platform','images/platform.png');
+			this.load.image('brick','images/brick.png');
+		}
+		function create(){
+			platform = this.physics.add.sprite(194,500,'platform');
+			platform.setBounce(1);
+			platform.setCollideWorldBounds(true);
+			platform.setImmovable(true);
+
+			ball = this.physics.add.sprite(194,488,'ball');
+			ball.setBounce(1.005);
+			ball.setCollideWorldBounds(true);
+			ball.setVelocity(speed,speed);
+
+			this.physics.add.collider(ball,platform);
+
+			bricks = this.physics.add.group();
+			addBricks(by);
+			addBricks(by*4);
+			addBricks(by*7);
+			bricks.children.iterate(function(child){
+				child.setImmovable(true);
+				child.setBounce(1);
+			});
+			this.physics.add.collider(ball, bricks,removeBricks,null,this);
+
+			this.time.addEvent({
+				delay:5000,
+				callback:moveBricksAndRow,
+				callbackScope:this,
+				loop:true
+			});
+			cursors = this.input.keyboard.createCursorKeys();
+
+		leftbtn.onpointerdown = function(){moveleft = true;}
+		rightbtn.onpointerdown = function(){moveright = true;}
+		leftbtn.onpointerup = function(){moveleft = false;}
+		rightbtn.onpointerup = function(){moveright = false;}
+		pausebtn.onclick = function(){paused = !paused;}
+
+		}
+		function update(){
+			platform.setVelocityY(0);
+			if(cursors.left.isDown || moveleft){
+				platform.setVelocityX(-300);
+			}else if(cursors.right.isDown || moveright){
+				platform.setVelocityX(300);
+			}else{
+				platform.setVelocityX(0);
+			}
+			if(ball.y > 490){
+				gameOver = true;
+			}
+			if(gameOver){
+				this.physics.pause();
+			}
+		}
+
+		setInterval(() => {
+			addBricks(9);
+			bricks.children.iterate(function(child){
+				child.setImmovable(true);
+				child.setBounce(1);
+			});
+			// if(ball.y){
+			// 	speed+=10;
+			// 	ball.setVelocity(-speed,speed);
+			// }
+		}, 20000);
+		function addBricks(y){
+			for(let i=0;i<=6;i++){
+				brick = bricks.create((i*60)+30,y,'brick');
+				brick.setImmovable(true);
+				brick.setBounce(1);
+			}
+		}
+		function moveBricksAndRow(){
+			bricks.children.iterate(function(child){
+				child.y += by;
+			});
+		}
+
+		function removeBricks(ball,brick){
+			brick.destroy();
+			score+=10;
+		}
+	</script>
+
+<script>
+	document.addEventListener('DOMContentLoaded',function(){
+		const canvas = document.getElementsByTagName('canvas')[0];
+		canvas.style.display = 'block';
+		canvas.style.margin = '0 auto';
+		if(window.innerWidth>window.innerHeight){
+			document.getElementById('actions').style.display = 'none';
+			document.getElementById('game-btns').style.display = 'none';
+		}
+	});
+</script>
+</body>
+</html>
